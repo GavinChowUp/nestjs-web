@@ -4,7 +4,9 @@ import {DocumentBuilder, SwaggerModule} from '@nestjs/swagger';
 import {LoggingInterceptor} from './common/intercepter/LoggingInterceptor';
 
 async function bootstrap() {
-    const app = await NestFactory.create(AppModule);
+    const app = await NestFactory.create(AppModule, {
+        logger: ['log', 'debug'],
+    });
 
     const options = new DocumentBuilder()
         .setTitle('mysql-orm example')
